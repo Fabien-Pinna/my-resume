@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Androgyne_TB';
+    src: url('./assets/font/Androgyne_TB.otf') format('opentype');
+}
+
+* {
+    font-family: 'Androgyne_TB', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(0,222,255,1) 0%, rgba(46,0,191,1) 75%, rgba(49,0,106,1) 100%);
+    color: #fff;
+}

@@ -1,10 +1,12 @@
+import Formation from './components/Formation/Formation'
+
 import './Resume.scss'
 
 const Resume = () => {
     return (
         <div className="background">
             <div className="layout-card">
-                <h1>Resume</h1>
+                <Formation />
             </div>
 
         </div>

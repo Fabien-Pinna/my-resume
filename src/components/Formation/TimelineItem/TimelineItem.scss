@@ -1,0 +1,16 @@
+.year {
+    position: relative;
+    width: calc(100% / 7);
+    
+    span {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        width: 55px;
+        background-color: #e6007e;
+        padding: 0.5rem;
+        border: 2px solid #fff;
+        margin-top: 1rem;
+    }
+}
+

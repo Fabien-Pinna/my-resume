@@ -1,0 +1,12 @@
+.title {
+    text-transform: uppercase;
+    display: flex;
+
+    h2:after {
+        content: '';
+        display: block;
+        margin-left: auto;
+        width: 45%;
+        border-bottom: 3px solid #fff;
+    }
+}

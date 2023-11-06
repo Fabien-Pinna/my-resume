@@ -1,3 +1,6 @@
+// variables
+$hot-pink: #e6007e;
+
 .year {
     position: relative;
     width: calc(100% / 7);
@@ -5,12 +8,64 @@
     span {
         display: flex;
         justify-content: center;
-        position: absolute;
-        width: 55px;
-        background-color: #e6007e;
+        position: relative;
+        width: 32px;
+        background-color: $hot-pink;
         padding: 0.5rem;
         border: 2px solid #fff;
         margin-top: 1rem;
+        font-size: 0.6em;
+        z-index: 2;
+
+        &.round {
+            border-radius: 100%;
+        }
+
+        &.arrow {
+            width: 50px;
+            height: 40px;
+            margin-top: 0;
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+            background-color: #fff;
+            top: 10px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 130%;
+                background-color: #2F0093;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                top: -8px;
+                left: -42px;
+                z-index: 1;
+            }
+
+            &:after {
+                content: 'Today';
+                position: absolute;
+                clip-path: polygon(0 0, 0% 100%, 100% 50%);
+                width: 68%;
+                height: 95%;
+                background-color: $hot-pink;
+                top: 1px;
+                left: 0px;
+                display: flex;
+                align-items: center;
+                padding: 0 4px 0 8px;
+
+            }
+
+        }
+    }
+
+    h4 {
+        font-size: 0.9em;
+    }
+
+    p {
+        font-size: 0.7em;
     }
 }
 

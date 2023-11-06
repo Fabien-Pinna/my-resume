@@ -61,14 +61,18 @@ const Timeline = () => {
                 level="Développement de plugins & thèmes"
                 school="Udemy, Youtube, Docs"
             />
-            <TimelineItem
-                className="bellow"
-                spanClassName="arrow"
-                year="Today"
-                title="ChatGPT, Dall E, LLM"
-                level="Prompt Engineering"
-                school="Udemy, Youtube, Docs"
-            />
+            <div className="end">
+                <i className="line"></i>
+                <TimelineItem
+                    className="bellow"
+                    spanClassName="arrow"
+                    year=""
+                    title="ChatGPT, Dall E, LLM"
+                    level="Prompt Engineering"
+                    school="Udemy, Youtube, Docs"
+                />
+
+            </div>
 
         </div>
     )

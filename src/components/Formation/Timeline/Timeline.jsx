@@ -3,9 +3,6 @@ import TimelineItem from "../TimelineItem/TimelineItem"
 import './Timeline.scss'
 
 const Timeline = () => {
-
-
-
     return (
         <div className="timeline">
             <TimelineItem

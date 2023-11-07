@@ -14,7 +14,7 @@ $hot-pink: #e6007e;
         padding: 0.5rem;
         border: 2px solid #fff;
         margin-top: 1rem;
-        font-size: 0.6em;
+        font-size: 0.8em;
         z-index: 2;
 
         &.round {
@@ -28,13 +28,14 @@ $hot-pink: #e6007e;
             clip-path: polygon(0 0, 0% 100%, 100% 50%);
             background-color: #fff;
             top: 10px;
+            left: 1px;
 
             &:before {
                 content: "";
                 position: absolute;
                 width: 100%;
                 height: 130%;
-                background-color: #2F0093;
+                background-color: #281FC8;
                 border: 2px solid #fff;
                 border-radius: 50%;
                 top: -8px;
@@ -58,14 +59,29 @@ $hot-pink: #e6007e;
             }
 
         }
+
+    }
+    .description {
+        position: absolute;
+        min-width: 200px;
+
+        h4 {
+            font-size: 1.1em;
+        }
+    
+        p {
+            font-size: 1em;
+        }
     }
 
-    h4 {
-        font-size: 0.9em;
+    &.above .description {
+        top: -2.5rem;
     }
 
-    p {
-        font-size: 0.7em;
+    &.bellow .description {
+        bottom: -3.5rem;
     }
+
+    
 }
 

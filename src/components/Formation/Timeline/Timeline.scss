@@ -3,6 +3,10 @@
         justify-content: space-between;
         align-items: flex-start;
         position: relative;
+        width: 80%;
+        min-width: 650px;
+        max-width: 950px;
+        top: 2rem;
 
         &:after {
             content: '';
@@ -26,10 +30,30 @@
                 width: 22%;
                 left: -20px;
                 z-index: 3;
-            }
 
+                @media screen and (max-width: 1300px) {
+                        left: -14px;
+                
+                    }
+
+                @media screen and (max-width: 1150px) {
+                        left: -11px;
+                
+                    }
+
+                    @media screen and (max-width: 900px) {
+                        left: -5px;
+                
+                    }
+            }
+            
             .year {
                 width: 100%;
+                min-width: 120px;
+
+                .description {
+                    bottom: -4rem;
+                }
             }
         }
     }

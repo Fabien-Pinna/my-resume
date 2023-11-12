@@ -1,6 +1,7 @@
 import Formation from './components/Formation/Formation'
 import Contact from './components/Contact/Contact'
 import Experience from './components/Experience/Experience'
+import Skill from './components/Skill/Skill'
 
 import './Resume.scss'
 
@@ -11,6 +12,7 @@ const Resume = () => {
                 <Formation />
                 <Contact />
                 <Experience />
+                <Skill />
             </div>
 
         </div>

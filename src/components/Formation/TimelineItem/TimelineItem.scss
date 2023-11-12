@@ -63,7 +63,7 @@ $hot-pink: #e6007e;
     }
     .description {
         position: absolute;
-        min-width: 200px;
+        min-width: 230px;
 
         h4 {
             font-size: 1.1em;
@@ -75,11 +75,11 @@ $hot-pink: #e6007e;
     }
 
     &.above .description {
-        top: -2.5rem;
+        top: -3rem;
     }
 
     &.bellow .description {
-        bottom: -3.5rem;
+        bottom: -4rem;
     }
 
     

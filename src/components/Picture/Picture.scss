@@ -1,0 +1,12 @@
+.picture {
+    grid-area: picture;
+    margin: 0 5rem 3rem 0;
+    position: relative;
+
+    img {
+        position: absolute;
+        left: -3.8rem;
+        bottom: -1.8rem;
+        height: 100%;
+    }
+}

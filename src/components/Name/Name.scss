@@ -1,0 +1,18 @@
+.name {
+    grid-area: name;
+    margin: 1rem 0 0 3rem;
+    display: flex;
+    align-items: center;
+    line-height: 2rem;
+    vertical-align: bottom;
+
+    .name-text {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .job-text {
+        font-size: 2rem;
+        margin-left: 1rem;
+    }
+}

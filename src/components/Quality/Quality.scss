@@ -1,0 +1,22 @@
+.quality {
+    grid-area: quality;
+    width: 60%;
+    margin-left: 4rem;
+
+    .quality-box {
+        margin-top: 1rem;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                width: 8rem;
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ const ExperienceItem = ({ experienceTitle, experienceSubtitle, listItems }) => {
     return (
         <div className='experience-item'>
             <div className="experience-title">
-                <h4>{experienceTitle}</h4>
+                <h3>{experienceTitle}</h3>
                 <h4>{experienceSubtitle}</h4>
             </div>
             <div className="experience-list">

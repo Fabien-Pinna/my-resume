@@ -2,12 +2,12 @@
 $hot-pink: #e6007e;
 
 .skill-item {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     width: 25%;
     
     .gauge {
         height: 10rem;
-        width: 0.8rem;
+        width: 0.7rem;
         display: block;
         background: #000;
         border-radius: 10px;
@@ -27,7 +27,7 @@ $hot-pink: #e6007e;
         
         .gauge-first-border, .gauge-second-border  {
             position: absolute;
-            width: 1.5px;
+            width: 1px;
             background: #fff;
             left: 3px;
         }
@@ -38,8 +38,8 @@ $hot-pink: #e6007e;
     }
 
     .text {
-        font-size: 1.1rem;
-        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        margin-top: 0.1rem;
         text-align: center;
     }
 }

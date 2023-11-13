@@ -3,4 +3,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    position: relative;
+
+    .language-box {
+        position: absolute;
+        bottom: -1.5rem;
+
+        p {
+            font-size: 0.85em;
+        }
+    }
 }

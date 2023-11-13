@@ -5,6 +5,7 @@
 
 * {
     font-family: 'Androgyne_TB', sans-serif;
+    font-weight: 100;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -33,9 +34,9 @@
             "name name picture picture"; 
 
         height: 95%;
-        width: 95%;
-        max-height: 1000px;
-        max-width: 1400px;
+        width: 85%;
+        max-height: 750px;
+        max-width: 1080px;
         background: linear-gradient(90deg, rgba(0,222,255,1) 0%, rgba(46,0,191,1) 75%, rgba(49,0,106,1) 100%);
         border-radius: 30px;
         position: relative;

@@ -6,8 +6,8 @@ $hot-pink: #e6007e;
     width: 25%;
     
     .gauge {
-        height: 125px;
-        width: 12px;
+        height: 12rem;
+        width: 0.8rem;
         display: block;
         background: #000;
         border-radius: 10px;
@@ -27,7 +27,7 @@ $hot-pink: #e6007e;
         
         .gauge-first-border, .gauge-second-border  {
             position: absolute;
-            width: 2px;
+            width: 1.5px;
             background: #fff;
             left: 3px;
         }

@@ -12,9 +12,9 @@ export const skillData = [
         skill: 'CSS',
         className: 'cssItem',
         gaugeHeight: '90%',
-        firstBorderHeight: '25%',
+        firstBorderHeight: '45%',
         secondBorderHeight: '20%',
-        borderTop: '20px',
+        borderTop: '25px',
         textContent: 'CSS'
     },
     {

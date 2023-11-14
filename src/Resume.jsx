@@ -13,14 +13,16 @@ const Resume = () => {
     return (
         <div className="background">
             <div className="layout-card">
-                <Formation />
-                <Contact />
-                <Experience />
-                <Skill />
-                <Quality />
-                <Language />
-                <Name />
-                <Picture />
+                <div className="layout-content">
+                    <Formation />
+                    <Contact />
+                    <Experience />
+                    <Skill />
+                    <Quality />
+                    <Language />
+                    <Name />
+                    <Picture />
+                </div>
             </div>
 
         </div>

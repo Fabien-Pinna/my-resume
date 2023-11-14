@@ -22,17 +22,9 @@
     color: #fff;
     
     .layout-card {
-        display: grid;
-        grid-template-columns:  3.2fr 1.4fr 0.5fr 1.5fr; 
-        grid-template-rows: 1.4fr 0.8fr 2.9fr 1fr 1fr; 
-        gap: 1rem; 
-        grid-template-areas: 
-            "formation formation formation contact"
-            "experience skill quality quality"
-            "experience skill picture picture"
-            "experience language picture picture"
-            "name name picture picture"; 
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 95%;
         width: 85%;
         max-height: 750px;
@@ -42,15 +34,22 @@
         position: relative;
         font-size: 14px;
 
-        &:before {
-            content : "";
-            position: absolute;
-            top: 2.5%;
-            right: 2.5%;
-            width: 95%;
-            height: 95%;
+        .layout-content {
+            display: grid;
+        grid-template-columns:  3.2fr 1.4fr 0.5fr 1.5fr; 
+        grid-template-rows: 1.4fr 0.8fr 2.9fr 1fr 1fr; 
+        gap: 1rem; 
+        grid-template-areas: 
+            "formation formation formation contact"
+            "experience skill quality quality"
+            "experience skill picture picture"
+            "experience language picture picture"
+            "name name picture picture";
+            
+            width: 97%;
+            height: 96%;
             border: 2px solid #fff;
-            border-radius: 30px;
+            border-radius: 25px;
         }
     }
 }

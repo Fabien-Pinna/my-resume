@@ -4,9 +4,10 @@ $hot-pink: #e6007e;
 .skill-item {
     margin-top: 0.5rem;
     width: 25%;
+    height: 40%;
     
     .gauge {
-        height: 10rem;
+        height: 100%;
         width: 0.7rem;
         display: block;
         background: #000;

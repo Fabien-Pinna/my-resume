@@ -8,10 +8,10 @@
         &:after {
             content: '';
             position: absolute;
-            top: 30px;
+            top: 1.9rem;
             border-top: 2px solid #fff;
             width: 87%;
-            left: 30px;
+            left: 1.9rem;
             z-index: 1;
             
         }
@@ -22,31 +22,15 @@
 
             .line {
                 position: absolute;
-                top: 30px;
+                top: 1.9rem;
                 border-top: 2px solid #fff;
                 width: 22%;
-                left: -20px;
+                left: -0.9rem;
                 z-index: 3;
-
-                @media screen and (max-width: 1300px) {
-                        left: -14px;
-                
-                    }
-
-                @media screen and (max-width: 1150px) {
-                        left: -11px;
-                
-                    }
-
-                    @media screen and (max-width: 900px) {
-                        left: -5px;
-                
-                    }
             }
             
             .year {
                 width: 100%;
-                min-width: 120px;
 
                 .description {
                     bottom: -4.5rem;

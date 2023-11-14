@@ -14,7 +14,7 @@ export const skillData = [
         gaugeHeight: '92%',
         firstBorderHeight: '45%',
         secondBorderHeight: '20%',
-        borderTop: '25%',
+        borderTop: '23%',
         textContent: 'CSS'
     },
     {
@@ -32,7 +32,7 @@ export const skillData = [
         gaugeHeight: '88%',
         firstBorderHeight: '50%',
         secondBorderHeight: '15%',
-        borderTop: '25%',
+        borderTop: '23%',
         textContent: 'ReactJS'
     },
     {
@@ -41,7 +41,7 @@ export const skillData = [
         gaugeHeight: '75%',
         firstBorderHeight: '35%',
         secondBorderHeight: '15%',
-        borderTop: '40%',
+        borderTop: '38%',
         textContent: 'threeJS'
     },
     {
@@ -57,9 +57,9 @@ export const skillData = [
         skill: 'wordpress',
         className: 'wpItem',
         gaugeHeight: '80%',
-        firstBorderHeight: '55%',
-        secondBorderHeight: '12%',
-        borderTop: '23%',
+        firstBorderHeight: '52%',
+        secondBorderHeight: '10%',
+        borderTop: '26%',
         textContent: 'WP'
     },
     {

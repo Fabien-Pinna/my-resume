@@ -1,22 +1,24 @@
 /* eslint-disable react/no-unknown-property */
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environment } from '@react-three/drei';
 import Resume from './components/Resume'
 
 const App = () => {
+    const viewport = useThree((state) => state.viewport);
+    const boxScalingFactor = window.innerWidth / 1900
+
     const boxRef = useRef();
     const htmlRef = useRef();
     const [isVisible, setIsVisible] = useState(true);
 
     // Textures
-    const ambientOcclusionTexture = useTexture('/textures/Metal_006_ambientOcclusion.jpg');
-    const colorTexture = useTexture('/textures/Metal_006_basecolor.jpg');
-    const heightTexture = useTexture('/textures/Metal_006_height.png');
-    const metalnessTexture = useTexture('/textures/Metal_006_metallic.jpg');
-    const normalTexture = useTexture('/textures/Metal_006_normal.jpg');
-    const roughnessTexture = useTexture('/textures/Metal_006_roughness.jpg');
+    const ambientOcclusionTexture = useTexture('/textures/Watercolor_Paper_001_OCC.jpg');
+    const colorTexture = useTexture('/textures/Watercolor_Paper_001_COLOR.jpg');
+    const normalTexture = useTexture('/textures/Watercolor_Paper_001_NORM.jpg');
+    const roughnessTexture = useTexture('/textures/Watercolor_Paper_001_ROUGH.jpg');
+    const displacementTexture = useTexture('/textures/Watercolor_Paper_001_DISP.png');
 
     colorTexture.repeat.set(1, 1);
     colorTexture.offset.set(0, 0);
@@ -26,14 +28,6 @@ const App = () => {
     ambientOcclusionTexture.offset.set(0, 0);
     ambientOcclusionTexture.wrapS = ambientOcclusionTexture.wrapT = THREE.RepeatWrapping;
 
-    heightTexture.repeat.set(1, 1);
-    heightTexture.offset.set(0, 0);
-    heightTexture.wrapS = heightTexture.wrapT = THREE.RepeatWrapping;
-
-    metalnessTexture.repeat.set(1, 1);
-    metalnessTexture.offset.set(0, 0);
-    metalnessTexture.wrapS = metalnessTexture.wrapT = THREE.RepeatWrapping;
-
     normalTexture.repeat.set(1, 1);
     normalTexture.offset.set(0, 0);
     normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping;
@@ -41,6 +35,10 @@ const App = () => {
     roughnessTexture.repeat.set(1, 1);
     roughnessTexture.offset.set(0, 0);
     roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
+
+    displacementTexture.repeat.set(1, 1);
+    displacementTexture.offset.set(0, 0);
+    displacementTexture.wrapS = displacementTexture.wrapT = THREE.RepeatWrapping;
 
 
     useFrame(({ camera }) => {
@@ -62,10 +60,8 @@ const App = () => {
             <OrbitControls enableZoom={false} enablePan={false} />
             <color args={['#0c001c']} attach={'background'} />
 
-
-
-
             <RoundedBox
+                scale={boxScalingFactor}
                 ref={boxRef}
                 args={[5.5, 4.1, 0.5]}
                 position={[0, 0, 0]}
@@ -75,18 +71,10 @@ const App = () => {
                 <meshStandardMaterial
                     attach='material'
                     map={colorTexture}
-                    aoMap={ambientOcclusionTexture}
                     normalMap={normalTexture}
-                    metalnessMap={metalnessTexture}
                     roughnessMap={roughnessTexture}
-                    metalness={0.5}
-                    roughness={0.2}
-                    displacementScale={0.1}
-
-                    displacementMap={heightTexture}
                 />
 
-                {/* <meshToonMaterial /> */}
 
                 {isVisible && (
                     <Html
@@ -95,6 +83,7 @@ const App = () => {
                         wrapperClass='my-resume'
                         distanceFactor={2}
                         position={[0, 0, 0.2]}
+                        scale={boxScalingFactor}
                     >
                         <Resume transparent />
 

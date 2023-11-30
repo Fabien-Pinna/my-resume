@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environment, Text } from '@react-three/drei';
@@ -12,6 +12,7 @@ const App = () => {
     const boxRef = useRef();
     const htmlRef = useRef();
     const [isVisible, setIsVisible] = useState(true);
+    const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
 
     // Textures
     const ambientOcclusionTexture = useTexture('/textures/Watercolor_Paper_001_OCC.jpg');
@@ -53,6 +54,20 @@ const App = () => {
         }
     });
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsPortrait(window.innerHeight > window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const textPosition = isPortrait ? [-0.5, 3.5, 0.9] : [3.6, 0.2, 1.4];
+    const textRotationY = isPortrait ? 0 : -0.8;
+
     return (
         <>
             <Environment preset='forest' />
@@ -93,8 +108,8 @@ const App = () => {
                         <Text
                             font='/font/Androgyne_TB.otf'
                             fontSize={0.8}
-                            position={[3.6, 0.2, 1.4]}
-                            rotation-y={-0.8}
+                            position={textPosition}
+                            rotation-y={textRotationY}
                             maxWidth={1.5}
                             textAlign='center'
                             color={'#fff'}

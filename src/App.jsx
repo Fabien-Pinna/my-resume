@@ -2,12 +2,12 @@
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environment } from '@react-three/drei';
+import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environment, Text } from '@react-three/drei';
 import Resume from './components/Resume'
 
 const App = () => {
     const viewport = useThree((state) => state.viewport);
-    const boxScalingFactor = window.innerWidth / 1900
+    const scale = Math.min(viewport.width / 6, viewport.height / 6);
 
     const boxRef = useRef();
     const htmlRef = useRef();
@@ -61,7 +61,7 @@ const App = () => {
             <color args={['#0c001c']} attach={'background'} />
 
             <RoundedBox
-                scale={boxScalingFactor}
+                scale={[scale, scale, scale]}
                 ref={boxRef}
                 args={[5.5, 4.1, 0.5]}
                 position={[0, 0, 0]}
@@ -77,17 +77,31 @@ const App = () => {
 
 
                 {isVisible && (
-                    <Html
-                        ref={htmlRef}
-                        transform
-                        wrapperClass='my-resume'
-                        distanceFactor={2}
-                        position={[0, 0, 0.2]}
-                        scale={boxScalingFactor}
-                    >
-                        <Resume transparent />
+                    <>
 
-                    </Html>
+                        <Html
+                            ref={htmlRef}
+                            transform
+                            wrapperClass='my-resume'
+                            distanceFactor={2}
+                            position={[0, 0, 0.2]}
+                            style={{ transform: `scale($[scale])` }}
+                        >
+                            <Resume transparent />
+
+                        </Html>
+                        <Text
+                            font='/font/Androgyne_TB.otf'
+                            fontSize={0.8}
+                            position={[3.6, 0.2, 1.4]}
+                            rotation-y={-0.8}
+                            maxWidth={1.5}
+                            textAlign='center'
+                            color={'#fff'}
+                        >
+                            My Resume
+                        </Text>
+                    </>
 
                 )}
             </RoundedBox>

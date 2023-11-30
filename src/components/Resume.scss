@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Androgyne_TB';
-    src: url('../assets/font/Androgyne_TB.otf') format('opentype');
+    src: url('/font/Androgyne_TB.otf') format('opentype');
 }
 
 * {
@@ -18,7 +18,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // background-color: #161313;
     color: #fff;
     
     .layout-card {

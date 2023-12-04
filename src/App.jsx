@@ -8,6 +8,7 @@ import Resume from './components/Resume'
 const App = () => {
     // Hooks
     const viewport = useThree((state) => state.viewport);
+    const { gl } = useThree()
     const boxRef = useRef();
     const htmlRef = useRef();
     const [isVisible, setIsVisible] = useState(true);
@@ -55,9 +56,20 @@ const App = () => {
     // Button text
     const buttonTextScale = 0.5;
 
+    // Button actions
     const onButtonClick = () => {
         window.location.href = '/pdf/cv-min.pdf';
     }
+
+    const onButtonHover = (e) => {
+        e.stopPropagation();
+        gl.domElement.style.cursor = 'pointer';
+    };
+
+    const onButtonUnhover = (e) => {
+        e.stopPropagation();
+        gl.domElement.style.cursor = 'auto';
+    };
 
 
     // Hide html when model is in front
@@ -141,9 +153,10 @@ const App = () => {
                             position={buttonPosition}
                             rotation-y={buttonRotationY}
                             onClick={onButtonClick}
-                            style={{ cursor: 'pointer' }}
+                            onPointerOver={onButtonHover}
+                            onPointerOut={onButtonUnhover}
                         >
-                            <meshStandardMaterial attach='material' color='blue' />
+                            <meshStandardMaterial attach='material' color='#20014c' />
                             <Text
                                 position={[0, 0, 0.2]}
                                 scale={buttonTextScale}
@@ -151,17 +164,17 @@ const App = () => {
                                 fontSize={0.5}
                                 color='white'
                                 textAlign='center'
-                                cursor='pointer'
                             >
                                 Télécharger
                             </Text>
                         </RoundedBox>
+
                     </>
 
                 )}
             </RoundedBox>
             <ContactShadows
-                position-y={-3}
+                position-y={-3.5}
                 opacity={0.8}
                 scale={6}
                 blur={2.4}

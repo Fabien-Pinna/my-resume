@@ -6,13 +6,15 @@ import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environmen
 import Resume from './components/Resume'
 
 const App = () => {
+    // Hooks
     const viewport = useThree((state) => state.viewport);
-    const scale = Math.min(viewport.width / 6, viewport.height / 6);
-
     const boxRef = useRef();
     const htmlRef = useRef();
     const [isVisible, setIsVisible] = useState(true);
     const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
+
+    // Scale
+    const scale = Math.min(viewport.width / 6, viewport.height / 6);
 
     // Textures
     const ambientOcclusionTexture = useTexture('/textures/Watercolor_Paper_001_OCC.jpg');
@@ -41,7 +43,24 @@ const App = () => {
     displacementTexture.offset.set(0, 0);
     displacementTexture.wrapS = displacementTexture.wrapT = THREE.RepeatWrapping;
 
+    // Text
+    const textPosition = isPortrait ? [-0.5, 2.5, 0.9] : [3.6, 0.4, 1.4];
+    const textRotationY = isPortrait ? 0 : -0.8;
+    const textFontSize = isPortrait ? 0.5 : 0.7;
 
+    // Button
+    const buttonPosition = isPortrait ? [-0.5, -2.5, 0.9] : [3.6, -0.8, 1.4]
+    const buttonRotationY = isPortrait ? 0 : -0.8;
+
+    // Button text
+    const buttonTextScale = 0.5;
+
+    const onButtonClick = () => {
+        window.location.href = '/pdf/cv-min.pdf';
+    }
+
+
+    // Hide html when model is in front
     useFrame(({ camera }) => {
         if (boxRef.current) {
             const boxPosition = boxRef.current.getWorldPosition(new THREE.Vector3());
@@ -49,11 +68,12 @@ const App = () => {
             const direction = new THREE.Vector3().subVectors(boxPosition, cameraPosition).normalize();
             const dot = direction.dot(boxRef.current.getWorldDirection(new THREE.Vector3()));
 
-            // Détermine si la face avant de la boîte est orientée vers la caméra
+            // Update HTML
             setIsVisible(dot < 0);
         }
     });
 
+    // Resize
     useEffect(() => {
         const handleResize = () => {
             setIsPortrait(window.innerHeight > window.innerWidth);
@@ -65,8 +85,7 @@ const App = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const textPosition = isPortrait ? [-0.5, 3.5, 0.9] : [3.6, 0.2, 1.4];
-    const textRotationY = isPortrait ? 0 : -0.8;
+
 
     return (
         <>
@@ -93,7 +112,6 @@ const App = () => {
 
                 {isVisible && (
                     <>
-
                         <Html
                             ref={htmlRef}
                             transform
@@ -107,15 +125,37 @@ const App = () => {
                         </Html>
                         <Text
                             font='/font/Androgyne_TB.otf'
-                            fontSize={0.8}
+                            fontSize={textFontSize}
                             position={textPosition}
                             rotation-y={textRotationY}
-                            maxWidth={1.5}
+                            maxWidth={2}
                             textAlign='center'
                             color={'#fff'}
                         >
-                            My Resume
+                            Mon CV
                         </Text>
+
+                        <RoundedBox
+                            scale={[1, 1, 1]}
+                            args={[1.8, 0.7, 0.2]}
+                            position={buttonPosition}
+                            rotation-y={buttonRotationY}
+                            onClick={onButtonClick}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <meshStandardMaterial attach='material' color='blue' />
+                            <Text
+                                position={[0, 0, 0.2]}
+                                scale={buttonTextScale}
+                                font='/font/Androgyne_TB.otf'
+                                fontSize={0.5}
+                                color='white'
+                                textAlign='center'
+                                cursor='pointer'
+                            >
+                                Télécharger
+                            </Text>
+                        </RoundedBox>
                     </>
 
                 )}

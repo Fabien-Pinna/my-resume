@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows, Html, RoundedBox, useTexture, Environment, Text } from '@react-three/drei';
 import Resume from './components/Resume'
+import { Download } from './assets/icons/Icons';
 
 const App = () => {
     // Hooks
@@ -11,8 +12,10 @@ const App = () => {
     const { gl } = useThree()
     const boxRef = useRef();
     const htmlRef = useRef();
+    const buttonRef = useRef();
     const [isVisible, setIsVisible] = useState(true);
     const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
+    const [buttonPressed, setButtonPressed] = useState(false);
 
     // Scale
     const scale = Math.min(viewport.width / 6, viewport.height / 6);
@@ -53,12 +56,16 @@ const App = () => {
     const buttonPosition = isPortrait ? [-0.5, -2.5, 0.9] : [3.6, -0.8, 1.4]
     const buttonRotationY = isPortrait ? 0 : -0.8;
 
-    // Button text
-    const buttonTextScale = 0.5;
+    console.log(buttonPosition[2]);
 
     // Button actions
     const onButtonClick = () => {
-        window.location.href = '/pdf/cv-min.pdf';
+        setButtonPressed(true);
+        setTimeout(() => {
+            setButtonPressed(false),
+                window.location.href = '/pdf/cv-min.pdf',
+                200
+        });
     }
 
     const onButtonHover = (e) => {
@@ -71,6 +78,17 @@ const App = () => {
         gl.domElement.style.cursor = 'auto';
     };
 
+    // Animate button when clicked
+    useFrame(() => {
+        if (buttonRef.current) {
+            const targetZ = buttonPressed ? buttonPosition[2] - 0.1 : buttonPosition[2];
+            buttonRef.current.position.z += (targetZ - buttonRef.current.position.z) * 0.3;
+
+            const targetScale = buttonPressed ? 0.4 : 1;
+            buttonRef.current.scale.z += (targetScale - buttonRef.current.scale.z) * 0.3;
+
+        }
+    })
 
     // Hide html when model is in front
     useFrame(({ camera }) => {
@@ -97,8 +115,6 @@ const App = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-
-
     return (
         <>
             <Environment preset='forest' />
@@ -120,7 +136,6 @@ const App = () => {
                     normalMap={normalTexture}
                     roughnessMap={roughnessTexture}
                 />
-
 
                 {isVisible && (
                     <>
@@ -148,8 +163,9 @@ const App = () => {
                         </Text>
 
                         <RoundedBox
+                            ref={buttonRef}
                             scale={[1, 1, 1]}
-                            args={[1.8, 0.7, 0.2]}
+                            args={[1.5, 0.7, 0.2]}
                             position={buttonPosition}
                             rotation-y={buttonRotationY}
                             onClick={onButtonClick}
@@ -157,20 +173,18 @@ const App = () => {
                             onPointerOut={onButtonUnhover}
                         >
                             <meshStandardMaterial attach='material' color='#20014c' />
-                            <Text
+
+                            <Html
+                                transform
                                 position={[0, 0, 0.2]}
-                                scale={buttonTextScale}
-                                font='/font/Androgyne_TB.otf'
-                                fontSize={0.5}
-                                color='white'
-                                textAlign='center'
+                                wrapperClass='my-button'
+                                style={{ pointerEvents: 'none' }}
                             >
-                                Télécharger
-                            </Text>
+                                <Download />
+                                PDF
+                            </Html>
                         </RoundedBox>
-
                     </>
-
                 )}
             </RoundedBox>
             <ContactShadows

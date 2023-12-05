@@ -17,3 +17,14 @@ canvas {
 .my-resume {
     user-select: none;
 }
+
+.my-button div div {
+    pointer-events: none !important;
+    user-select: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 0.8em;
+}
